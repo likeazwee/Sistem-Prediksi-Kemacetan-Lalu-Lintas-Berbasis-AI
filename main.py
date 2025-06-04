@@ -15,3 +15,4 @@ total_time, path = dijkstra(traffic_graph, start, goal)
 # Tampilkan hasil
 print(f"\n>> Rute optimal dari {start} ke {goal}: {' -> '.join(path)}")
 print(f">> Estimasi waktu tempuh: {total_time:.2f} menit")
+
