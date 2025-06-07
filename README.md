@@ -101,13 +101,3 @@ Mendukung pengelolaan lalu lintas berbasis data dan AI untuk:
 - Meningkatkan efisiensi transportasi kota
 
 ---
-
-## 📬 Kontribusi
-
-Silakan buat issue atau pull request jika ingin berkontribusi!
-
----
-
-## 🧠 Lisensi
-
-Lisensi: [MIT License](LICENSE)
