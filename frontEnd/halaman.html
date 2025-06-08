@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart City Bengkulu - Traffic Prediction</title>
+    <style>
+        /* Reset and basic */
+        body {
+            margin: 0; 
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+            color: #6b7280;
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        h1 {
+            font-weight: 700;
+            font-size: 48px;
+            color: #111827;
+            margin-bottom: 0.5em;
+        }
+        p.subtitle {
+            font-size: 18px;
+            color: #4b5563;
+            margin-bottom: 2em;
+        }
+        form {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+            margin-bottom: 2.5em;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 1.5em;
+        }
+        .form-group {
+            flex: 1 1 280px;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #374151;
+        }
+        input[type="text"], input[type="number"], select {
+            padding: 10px 12px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+        }
+        button {
+            background: #111827;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-right: 12px;
+            user-select: none;
+        }
+        button:hover {
+            background: #1f2937;
+            transform: translateY(-2px);
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 1em;
+        }
+        .tab {
+            color: #6b7280;
+            padding: 12px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: color 0.3s, border-color 0.3s;
+            user-select: none;
+        }
+        .tab.active {
+            color: #111827;
+            border-color: #2563eb;
+        }
+        .tab-content {
+            display: none;
+            background: #f9fafb;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgb(0 0 0 / 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            color: #111827;
+        }
+        .result-title {
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        .metric-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .status {
+            display: inline-block;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            margin-top: 12px;
+        }
+        .status.lancar {
+            color: #065f46;
+            background: #d1fae5;
+        }
+        .status.sedang {
+            color: #78350f;
+            background: #fde68a;
+        }
+        .status.macet {
+            color: #991b1b;
+            background: #fecaca;
+        }
+        #map {
+            border-radius: 12px;
+            box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
+            width: 100%;
+            height: 600px;
+            margin-top: 30px;
+        }
+        .alert {
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .alert.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .alert.warning {
+            background: #fde68a;
+            color: #78350f;
+        }
+        .alert.danger {
+            background: #fecaca;
+            color: #991b1b;
+        }
+        /* Route Section Styling */
+        .route-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+        }
+
+        .route-section.alternative {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+
+        .route-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* Route Comparison Styling */
+        .route-comparison {
+            background: #e8f4fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .comparison-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #bee5eb;
+        }
+
+        .metric-line.highlight {
+            background: rgba(40, 167, 69, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+
+        .better {
+            color: #28a745 !important;
+            font-weight: bold;
+        }
+
+        .worse {
+            color: #dc3545 !important;
+            font-weight: bold;
+        }
+
+        /* Technical Info Styling */
+        .technical-info {
+            background: #f1f3f4;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #6c757d;
+        }
+
+        .tech-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ced4da;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .route-section, .route-comparison, .technical-info {
+                padding: 12px;
+                margin: 8px 0;
+            }
+            
+            .route-header, .comparison-header, .tech-header {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🚦 Smart City Bengkulu</h1>
+    <p class="subtitle">Sistem Prediksi Lalu Lintas Berbasis Kecerdasan Buatan</p>
+
+    <form method="POST">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Wilayah:</label>
+                <input type="text" name="wilayah" required value="{{ wilayah or 'Bengkulu, Indonesia' }}" />
+            </div>
+            <div class="form-group">
+                <label>Lokasi Awal:</label>
+                <input type="text" name="lokasi_awal" required value="{{ lokasi_awal or 'Universitas Bengkulu' }}" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Lokasi Tujuan:</label>
+                <input type="text" name="lokasi_tujuan" required value="{{ lokasi_tujuan or 'Pasar Panorama Bengkulu' }}" />
+            </div>
+        <div class="form-group">
+            <label>Jam (0-23):</label>
+            <select name="jam" required>
+                {% for i in range(0, 24) %}
+                <option value="{{ i }}" {% if jam == i %}selected{% endif %}>{{ i }}:00</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Hari :</label>
+                <select name="hari" required>
+                    {% for i in range(1, 8) %}
+                    <option value="{{ i }}" {% if hari == i %}selected{% endif %}>
+                        {{ ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'][i-1] }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Model AI:</label>
+                <select name="model_type">
+                    <option value="all" {% if model_type == 'all' %}selected{% endif %}>Semua Model (Perbandingan)</option>
+                    <option value="linear" {% if model_type == 'linear' %}selected{% endif %}>Linear Regression</option>
+                    <option value="neural_network" {% if model_type == 'neural_network' %}selected{% endif %}>Neural Network</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit">Analisis Lalu Lintas</button>
+    </form>
+
+    {% if predictions %}
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('prediction')">Prediksi</div>
+        <div class="tab" onclick="showTab('comparison')">Perbandingan Model</div>
+    </div>
+
+    <div id="prediction" class="tab-content active">
+        {% for model, result in predictions.items() %}
+        <div class="result-card">
+            <div class="result-title">{{ model }}</div>
+            <div class="metric-line">
+                <span>Waktu Algoritma:</span>
+                <strong>{{ "%.4f"|format(result.time) }} detik</strong>
+            </div>
+            {% set status_class = "lancar" if result.prediction > 30 else ("sedang" if result.prediction > 15 else "macet") %}
+            {% set status_text = "Lancar" if result.prediction > 30 else ("Sedang" if result.prediction > 15 else "Macet") %}
+            <div class="status {{ status_class }}">Status: {{ status_text }}</div>
+            <div class="metric-line">
+                <span>MAE:</span>
+                <span>{{ "%.2f"|format(result.metrics.mae) }}</span>
+            </div>
+            <div class="metric-line">
+                <span>R² Score:</span>
+                <span>{{ "%.3f"|format(result.metrics.r2) }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id="comparison" class="tab-content">
+        <table style="width:100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr style="background-color:#f3f4f6;">
+                    <th style="padding: 10px; border: 1px solid #e5e7eb;">Model</th>
+                    <th style="padding: 10px; border: 1px solid #e5e7eb;">Prediksi (km/jam)</th>
+                    <th style="padding: 10px; border: 1px solid #e5e7eb;">Waktu Eksekusi (s)</th>
+                    <th style="padding: 10px; border: 1px solid #e5e7eb;">MAE</th>
+                    <th style="padding: 10px; border: 1px solid #e5e7eb;">R² Score</th>
+                    <th style="padding: 10px; border: 1px solid #e5e7eb;">Akurasi (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for model, result in predictions.items() %}
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #e5e7eb;">{{ model }}</td>
+                    <td style="padding: 10px; border: 1px solid #e5e7eb;">{{ "%.2f"|format(result.prediction) }}</td>
+                    <td style="padding: 10px; border: 1px solid #e5e7eb;">{{ "%.4f"|format(result.time) }}</td>
+                    <td style="padding: 10px; border: 1px solid #e5e7eb;">{{ "%.2f"|format(result.metrics.mae) }}</td>
+                    <td style="padding: 10px; border: 1px solid #e5e7eb;">{{ "%.3f"|format(result.metrics.r2) }}</td>
+                    <td style="padding: 10px; border: 1px solid #e5e7eb;">{{ "%.1f"|format(result.metrics.r2 * 100) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    {% if map_html %}
+    <div class="result-card">
+        <div class="result-title">📍 Info Rute</div>
+        
+            <!-- Rute Utama -->
+            <div class="route-section">
+                <div class="route-header">🛣️ Rute Utama</div>
+                <div class="metric-line">
+                    <span>Jarak Tempuh:</span>
+                    <strong>{{ total_distance_km }} km</strong>
+                </div>
+                <div class="metric-line">
+                    <span>Estimasi Waktu Tempuh:</span>
+                    <strong>{{ est_time_min }} menit</strong>
+                </div>
+            </div>
+            
+            <!-- Rute Alternatif (hanya tampil jika ada) -->
+            {% if alt_distance_km > 0 %}
+            <div class="route-section alternative">
+                <div class="route-header">🔄 Rute Alternatif</div>
+                <div class="metric-line">
+                    <span>Jarak Tempuh:</span>
+                    <strong>{{ alt_distance_km }} km</strong>
+                </div>
+                <div class="metric-line">
+                    <span>Estimasi Waktu Tempuh:</span>
+                    <strong>{{ alt_est_time_sec }} detik</strong>
+                </div>
+            </div>
+            
+            <!-- Perbandingan Rute -->
+            <div class="route-comparison">
+                <div class="comparison-header">📊 Perbandingan</div>
+                {% if alt_distance_km < total_distance_km %}
+                    <div class="metric-line highlight">
+                        <span>Selisih Jarak:</span>
+                        <strong class="better">{{ "%.2f"|format(total_distance_km - alt_distance_km) }} km lebih pendek</strong>
+                    </div>
+                {% elif alt_distance_km > total_distance_km %}
+                    <div class="metric-line">
+                        <span>Selisih Jarak:</span>
+                        <strong class="worse">{{ "%.2f"|format(alt_distance_km - total_distance_km) }} km lebih panjang</strong>
+                    </div>
+                {% endif %}
+                
+                {% if alt_est_time_sec < est_time_min * 60 %}
+                    <div class="metric-line highlight">
+                        <span>Selisih Waktu:</span>
+                        <strong class="better">{{ "%.0f"|format((est_time_min * 60) - alt_est_time_sec) }} detik lebih cepat</strong>
+                    </div>
+                {% elif alt_est_time_sec > est_time_min * 60 %}
+                    <div class="metric-line">
+                        <span>Selisih Waktu:</span>
+                        <strong class="worse">{{ "%.0f"|format(alt_est_time_sec - (est_time_min * 60)) }} detik lebih lama</strong>
+                    </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            
+            <!-- Info Teknis -->
+            <div class="technical-info">
+                <div class="tech-header">⚙️ Info Teknis</div>
+                <div class="metric-line">
+                    <span>Waktu Eksekusi Algoritma:</span>
+                    <strong>{{ "%.6f"|format(route_time_sec) }} detik</strong>
+                </div>
+                <div class="metric-line">
+                    <span>Penggunaan Memori:</span>
+                    <strong>{{ "%.2f"|format(route_memory_kb) }} KB</strong>
+                </div>
+            </div>
+        </div>
+        
+        <div id="map">{{ map_html|safe }}</div>
+    {% endif %}
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+        function showTab(id) {
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            tabs.forEach(tab => {
+                if (tab.textContent.toLowerCase() === (id === 'prediction' ? 'prediksi' : 'perbandingan model')) {
+                    tab.classList.add('active');
+                }
+            });
+            const content = document.getElementById(id);
+            if (content) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</div>
+</body>
+</html>
