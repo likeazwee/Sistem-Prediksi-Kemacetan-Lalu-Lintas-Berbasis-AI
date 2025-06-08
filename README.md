@@ -5,6 +5,17 @@ Aplikasi berbasis web untuk memprediksi kecepatan lalu lintas dan mendeteksi pot
 
 ---
 
+## 👥 Anggota Kelompok 6
+
+| Nama                     | GitHub                                      |
+|--------------------------|---------------------------------------------|
+| Habib Al-Qodri           | [HabibAlQodri](https://github.com/HabibAlQodri) |
+| Yohanes Adi Prasetya     | [Feuriee](https://github.com/Feuriee)      |
+| Agyl Wendi Pratama       | [likeazwee](https://github.com/likeazwee)  |
+
+---
+
+
 ## 🔍 Fitur Utama
 
 - Prediksi kecepatan kendaraan berdasarkan jam dan hari
