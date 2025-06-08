@@ -1,103 +1,106 @@
 # 🚦 Sistem Prediksi Kemacetan Lalu Lintas Berbasis Kecerdasan Buatan
 
-Sistem ini dirancang untuk memprediksi kemacetan lalu lintas secara real-time dan memberikan rekomendasi rute alternatif terbaik tanpa menggunakan video CCTV. Teknologi ini memanfaatkan data dari sensor jalan, GPS kendaraan, dan data historis lalu lintas untuk mendukung pengambilan keputusan yang cerdas.
-
----
+Aplikasi berbasis web untuk memprediksi kecepatan lalu lintas dan mendeteksi potensi kemacetan di wilayah tertentu. Sistem ini tidak menggunakan video CCTV, tetapi mengandalkan data waktu (jam, hari, hari libur, jam sibuk) serta simulasi data dari wilayah dan rute pengguna, dengan visualisasi rute dan hasil prediksi langsung di peta.
 
 ## 🔍 Fitur Utama
 
-- Prediksi kemacetan berdasarkan data real-time & historis
-- Rekomendasi rute tercepat menggunakan algoritma graf
-- Integrasi data dari berbagai sumber (sensor, GPS, API cuaca, dsb.)
-- Visualisasi dan notifikasi untuk pengguna dan petugas
+- Prediksi kecepatan kendaraan berdasarkan jam dan hari
+- Analisis performa model AI (MAE dan R²)
+- Perbandingan 4 model AI: Linear Regression, Decision Tree, Random Forest, dan Neural Network (MLP)
+- Rekomendasi kondisi lalu lintas (lancar, sedang, macet)
+- Visualisasi peta interaktif dengan jalur rute dan titik kemacetan
+- Dukungan input lokasi menggunakan nama tempat (geocoding)
 
----
+## 🧠 Model AI yang Digunakan
 
-## 🧭 Alur Sistem
+- **Linear Regression**
+- **Decision Tree Regressor**
+- **Random Forest Regressor**
+- **MLP Neural Network**
 
-### 1. Pengumpulan Data (Data Acquisition)
+Model dilatih menggunakan data simulasi yang mencakup:
+- Jam dan hari
+- Hari libur / akhir pekan
+- Waktu sibuk (rush hour)
 
-Sumber data utama:
+## 🗺️ Alur Sistem
 
-- **Sensor Lalu Lintas**: Kecepatan & volume kendaraan per ruas jalan  
-- **GPS Kendaraan**: Posisi & waktu tempuh kendaraan (fleet/taksi/angkutan umum)  
-- **Data Historis**: Pola lalu lintas berdasarkan waktu & lokasi  
-- **Data Konteks (Opsional)**: Cuaca, event besar, jam sibuk, kecelakaan
+1. **Input Pengguna**
+   - Wilayah (contoh: `Bengkulu, Indonesia`)
+   - Lokasi awal dan tujuan (nama tempat)
+   - Jam dan hari
+   - Model AI yang dipilih atau semua model
 
-📡 Data dikirim secara periodik dan disimpan dalam sistem database atau stream processing seperti Apache Kafka atau MQTT.
+2. **Simulasi dan Pelatihan Data**
+   - Data lalu lintas disimulasikan berdasarkan aturan probabilistik dan waktu
+   - Setiap model dilatih ulang pada setiap permintaan
 
----
+3. **Prediksi Kecepatan**
+   - Model memprediksi kecepatan rata-rata kendaraan (dalam km/jam)
+   - Status diklasifikasikan:
+     - `> 30 km/jam` → **Lancar**
+     - `15–30 km/jam` → **Sedang**
+     - `< 15 km/jam` → **Macet**
 
-### 2. Praproses & Normalisasi Data (Preprocessing)
+4. **Visualisasi Peta**
+   - Rute dari lokasi awal ke tujuan dihitung menggunakan OSMnx dan NetworkX
+   - Titik kemacetan ditandai berdasarkan posisi tengah rute jika prediksi buruk
 
-Langkah praproses meliputi:
-
-- **Pembersihan**: Menghapus nilai kosong, outlier, dan duplikat
-- **Normalisasi**: Menstandarkan data numerik (misalnya skala 0–1)
-- **Agregasi Waktu**: Data dikelompokkan per interval (mis. setiap 5/10 menit)
-- **Penyusunan Sequence**: Untuk model time series (LSTM)
-
----
-
-### 3. Prediksi Kemacetan (AI Engine – LSTM)
-
-Menggunakan model **Long Short-Term Memory (LSTM)** untuk mengenali pola dalam data waktu.
-
-- **Input**: Kecepatan & volume kendaraan 1–2 jam terakhir  
-- **Output**: Prediksi kecepatan 10–30 menit ke depan
-
-**Interpretasi:**
-
-- Kecepatan < 10 km/jam → Kemacetan tinggi  
-- Penurunan kecepatan drastis → Kemacetan mendadak
-
----
-
-### 4. Rekomendasi Rute (Routing Engine)
-
-Setelah prediksi kemacetan:
-
-- **Representasi Graf**: Setiap ruas jalan adalah simpul dengan bobot (waktu tempuh)
-- **Dijkstra Algorithm**: Menentukan rute tercepat dari A ke B
-- **(Opsional) Reinforcement Learning**: Kebijakan optimal jangka panjang berbasis reward (waktu tempuh minimum)
-
----
-
-### 5. Evaluasi & Validasi
-
-- **MAE / RMSE**: Akurasi prediksi kecepatan  
-- **Waktu tempuh aktual vs prediksi**: Efektivitas rute  
-- **User feedback**: Validasi dari sisi pengguna
-
----
-
-### 6. Antarmuka & Integrasi
-
-Output sistem tersedia untuk:
-
-- **Aplikasi Mobile/Web**: Menampilkan peta, rute, dan estimasi waktu
-- **Dashboard Petugas**: Untuk monitoring & keputusan operasional
-- **Notifikasi Cerdas**: Peringatan dini kemacetan atau kondisi darurat
-
----
+5. **Notifikasi Cerdas**
+   - Sistem memberikan rekomendasi tindakan berdasarkan hasil prediksi
 
 ## 🛠️ Teknologi yang Digunakan
 
-- Python, JavaScript
-- TensorFlow / PyTorch
-- Apache Kafka / MQTT
-- PostgreSQL / InfluxDB
-- Dijkstra Algorithm / RL Model
-- React / React Native / Flutter
+- **Python (Flask)** – Backend dan Web Server
+- **scikit-learn** – Model AI/ML
+- **OSMnx & NetworkX** – Jalur jalan dan rute optimal
+- **Folium** – Visualisasi peta dan rute
+- **HTML/CSS (render_template_string)** – Antarmuka web responsif
 
----
+## 📦 Cara Menjalankan
 
-## 📌 Tujuan Proyek
+1. **Install Dependensi**
 
-Mendukung pengelolaan lalu lintas berbasis data dan AI untuk:
+\`\`\`bash
+pip install flask scikit-learn pandas numpy osmnx networkx folium
+\`\`\`
 
-- Mengurangi kemacetan
-- Memberikan rute optimal kepada pengguna
-- Meningkatkan efisiensi transportasi kota
+2. **Jalankan Aplikasi**
 
----
+\`\`\`bash
+python main.py
+\`\`\`
+
+3. **Akses via Browser**
+
+Buka: [http://localhost:5000](http://localhost:5000)
+
+## 📱 API Endpoint
+
+`POST /api/predict`
+
+\`\`\`json
+{
+  "jam": 17,
+  "hari": 5
+}
+\`\`\`
+
+**Response:**
+
+\`\`\`json
+{
+  "success": true,
+  "predictions": {
+    "Linear Regression": 22.45,
+    "Decision Tree": 18.32
+  },
+  "timestamp": "2025-06-08T12:00:00"
+}
+\`\`\`
+
+## 🎯 Tujuan Proyek
+
+- Menyediakan sistem pendukung keputusan untuk pengelolaan lalu lintas
+- Mengurangi potensi kemacetan secara preventif
+- Memberikan informasi dan rute terbaik untuk pengguna
