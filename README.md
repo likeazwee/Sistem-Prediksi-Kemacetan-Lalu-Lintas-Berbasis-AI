@@ -61,9 +61,7 @@ Model dilatih menggunakan data simulasi yang mencakup:
 
 1. **Install Dependensi**
 
-\`\`\`bash
-pip install flask scikit-learn pandas numpy osmnx networkx folium
-\`\`\`
+<pre> ```bash pip install flask scikit-learn pandas numpy osmnx networkx folium ``` </pre>
 
 2. **Jalankan Aplikasi**
 
