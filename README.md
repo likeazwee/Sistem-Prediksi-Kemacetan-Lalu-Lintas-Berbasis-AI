@@ -1,8 +1,8 @@
-# 🚦 Smart City Bengkulu - Sistem Prediksi Lalu Lintas Berbasis AI
+# Smart City Bengkulu - Sistem Prediksi Lalu Lintas Berbasis AI
 
 Sistem prediksi lalu lintas cerdas yang menggunakan kecerdasan buatan untuk memprediksi kecepatan kendaraan dan mendeteksi potensi kemacetan di wilayah Bengkulu. Aplikasi berbasis web ini menggabungkan machine learning, analisis jaringan jalan, dan visualisasi peta interaktif untuk memberikan insight lalu lintas real-time.
 
-## 👥 Tim Pengembang
+## Tim Pengembang
 
 | Nama                     | NPM       | GitHub Profile                              | Role            |
 |--------------------------|-----------|---------------------------------------------|-----------------|
@@ -10,26 +10,26 @@ Sistem prediksi lalu lintas cerdas yang menggunakan kecerdasan buatan untuk memp
 | Yohanes Adi Prasetya     | G1A023049 | [@Feuriee](https://github.com/Feuriee)      | Frontend & UI   |
 | Agyl Wendi Pratama       | G1A023087 | [@likeazwee](https://github.com/likeazwee)  | Data & Testing  |
 
-## 🌟 Fitur Unggulan
+## Fitur Unggulan
 
-### 🔮 Prediksi Kecerdasan Buatan
+### Prediksi Kecerdasan Buatan
 - **Multi-Model AI**: Menggunakan 2 model machine learning (Linear Regression & Neural Network)
 - **Analisis Performa**: Evaluasi model dengan metrik MAE dan R² Score
 - **Prediksi Real-time**: Hasil prediksi berdasarkan jam dan hari yang dipilih
 - **Klasifikasi Status**: Otomatis mengkategorikan kondisi lalu lintas (Lancar/Sedang/Macet)
 
-### 🗺️ Visualisasi Peta Interaktif
+### Visualisasi Peta Interaktif
 - **Pemetaan Rute**: Menampilkan jalur optimal dari lokasi awal ke tujuan
 - **Deteksi Kemacetan**: Identifikasi dan marking titik-titik kemacetan potensial
 - **Jalur Alternatif**: Menyediakan rute alternatif jika ditemukan kemacetan
 - **Geocoding**: Konversi nama tempat menjadi koordinat geografis
 
-### 📊 Dashboard Analitik
+### Dashboard Analitik
 - **Perbandingan Model**: Tabel komparasi performa semua model AI
 - **Metrics Lengkap**: Waktu eksekusi, penggunaan memori, dan akurasi
 - **Interface Responsif**: Desain modern dan user-friendly
 
-## 🏗️ Arsitektur Sistem
+## Arsitektur Sistem
 
 ```
 Smart City Bengkulu/
@@ -41,7 +41,7 @@ Smart City Bengkulu/
 └── cache_peta/           # Cached map data (auto-generated)
 ```
 
-### 📋 Penjelasan File Utama
+### Penjelasan File Utama
 
 #### `main.py` - Core Application
 - **Flask Web Server**: Menjalankan aplikasi web pada port 5000
@@ -67,7 +67,7 @@ Smart City Bengkulu/
 - **Results Display**: Tampilan hasil prediksi dalam format yang mudah dipahami
 - **Interactive Map**: Peta yang dapat di-zoom dan di-navigate
 
-## 🧠 Model Machine Learning
+## Model Machine Learning
 
 ### Model yang Digunakan
 
@@ -102,7 +102,7 @@ if late_night:
     base_speed += random(8, 15)   # Peningkatan saat malam
 ```
 
-## 🗺️ Sistem Pemetaan
+## Sistem Pemetaan
 
 ### OpenStreetMap Integration
 - **OSMnx Library**: Mengunduh data jaringan jalan real-time
@@ -120,7 +120,7 @@ if late_night:
 - **Strategic Positioning**: Penempatan marker kemacetan di titik tengah rute
 - **Visual Indicators**: Color-coding untuk berbagai tingkat kemacetan
 
-## 🚀 Instalasi dan Setup
+## Instalasi dan Setup
 
 ### Prerequisites
 ```bash
@@ -166,7 +166,7 @@ HOST = '0.0.0.0'
 PORT = 5000
 ```
 
-## 📡 API Documentation
+## API Documentation
 
 ### Endpoint: `POST /api/predict`
 
@@ -217,7 +217,7 @@ if data['success']:
     print(f"Neural Network: {predictions['Neural Network']:.2f} km/h")
 ```
 
-## 🎯 Use Cases & Applications
+## Use Cases & Applications
 
 ### 1. Smart City Management
 - **Traffic Control**: Optimasi pengaturan lampu lalu lintas
@@ -234,7 +234,7 @@ if data['success']:
 - **Travel Planning**: Rekomendasi waktu perjalanan terbaik
 - **Fleet Management**: Monitoring dan optimasi kendaraan komersial
 
-## 📊 Performance Metrics
+## Performance Metrics
 
 ### Model Evaluation
 - **Mean Absolute Error (MAE)**: Rata-rata kesalahan prediksi dalam km/jam
@@ -248,7 +248,7 @@ if data['success']:
 - **Memory Footprint**: ~50-100 MB untuk operasi normal
 - **Cache Efficiency**: 90% hit rate untuk lokasi yang sering diakses
 
-## 🛠️ Development & Customization
+## Development & Customization
 
 ### Menambah Model AI Baru
 
@@ -288,7 +288,7 @@ Modifikasi CSS di `halaman.html` untuk mengubah tampilan:
 }
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -315,7 +315,7 @@ Aktifkan debug mode untuk informasi error detail:
 app.run(debug=True, host='0.0.0.0', port=5000)
 ```
 
-## 🚀 Future Enhancements
+## Future Enhancements
 
 ### Planned Features
 - [ ] **Real-time Traffic Data**: Integrasi dengan API traffic real-time
@@ -329,7 +329,7 @@ app.run(debug=True, host='0.0.0.0', port=5000)
 - [ ] **API Rate Limiting**: Pembatasan request untuk stabilitas
 - [ ] **Load Balancing**: Support untuk high-traffic scenarios
 
-## 🤝 Contributing
+## Contributing
 
 Kami menerima kontribusi dari komunitas! Berikut cara berkontribusi:
 
@@ -346,7 +346,7 @@ Kami menerima kontribusi dari komunitas! Berikut cara berkontribusi:
 - Update dokumentasi jika diperlukan
 - Pastikan tidak ada breaking changes
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **OpenStreetMap Contributors**: Data peta open-source
 - **Scikit-learn Team**: Library machine learning
@@ -354,7 +354,7 @@ Kami menerima kontribusi dari komunitas! Berikut cara berkontribusi:
 - **Folium Developers**: Visualisasi peta yang indah
 - **Universitas Bengkulu**: Dukungan akademik dan riset
 
-## 📞 Contact & Support
+## Contact & Support
 
 Untuk pertanyaan, bug reports, atau diskusi:
 
@@ -363,7 +363,3 @@ Untuk pertanyaan, bug reports, atau diskusi:
 - **LinkedIn**: [Habib Al-Qodri](https://linkedin.com/in/habib-alqodri)
 
 ---
-
-**Dibuat dengan ❤️ untuk Smart City Bengkulu**
-
-*Sistem ini dikembangkan sebagai bagian dari upaya menciptakan kota yang lebih cerdas dan efisien melalui pemanfaatan teknologi kecerdasan buatan.*
