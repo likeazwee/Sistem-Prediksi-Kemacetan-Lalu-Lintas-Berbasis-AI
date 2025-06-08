@@ -32,13 +32,17 @@ Sistem prediksi lalu lintas cerdas yang menggunakan kecerdasan buatan untuk memp
 ## Arsitektur Sistem
 
 ```
-Smart City Bengkulu/
-├── main.py                 # Flask application & routing
-├── sistem.py              # Machine Learning models
-├── data.py               # Data generation & map processing
-├── frontend/
-│   └── halaman.html      # Web interface
-└── cache_peta/           # Cached map data (auto-generated)
+SISTEM/
+├── API/
+│   └── sistem.py
+├── cache/
+├── cache_peta/
+│   └── Bengkulu_Indonesia...
+├── data/
+│   └── data.py
+├── frontEnd/
+│   └── halaman.html
+└── main.py
 ```
 
 ### Penjelasan File Utama
