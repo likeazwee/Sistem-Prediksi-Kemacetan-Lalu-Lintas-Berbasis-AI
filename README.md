@@ -358,12 +358,3 @@ Kami menerima kontribusi dari komunitas! Berikut cara berkontribusi:
 - **Folium Developers**: Visualisasi peta yang indah
 - **Universitas Bengkulu**: Dukungan akademik dan riset
 
-## Contact & Support
-
-Untuk pertanyaan, bug reports, atau diskusi:
-
-- **GitHub Issues**: [Create an issue](https://github.com/yourusername/smart-city-bengkulu/issues)
-- **Email**: habib.alqodri@example.com
-- **LinkedIn**: [Habib Al-Qodri](https://linkedin.com/in/habib-alqodri)
-
----
