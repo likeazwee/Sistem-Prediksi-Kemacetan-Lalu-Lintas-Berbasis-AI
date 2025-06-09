@@ -69,8 +69,6 @@ MAE = (1/n) * ∑ |yᵢ - ŷᵢ|
 
 Semakin kecil MAE, semakin akurat model.
 
-### 📐 Rumus Evaluasi Model
-
 #### Mean Absolute Error (MAE)
 
 Mengukur rata-rata kesalahan absolut:
