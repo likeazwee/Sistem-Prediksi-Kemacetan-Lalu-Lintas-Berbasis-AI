@@ -49,23 +49,23 @@ SISTEM/
 
 ### 🔍 Halaman Pencarian Rute
 
-![GUI Main Window]([https://github.com/Feuriee/AI-Bidirectional-Search-Map-UNIB/blob/main/Image%20Sample/Main%20window.png](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/60815f96e2a5f4e5a6c7983b4fdf19e2ac14d024/Image_UI/Halaman.png))
+![GUI Main Window](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/a7d1ee337a302ba164acbe66910c40859c28d622/Image_UI/Halaman.png)
 
 ### 📊 Hasil Pencarian Rute
 
-![GUI Analysis]([https://github.com/Feuriee/AI-Bidirectional-Search-Map-UNIB/blob/5589d632bb7bee1cdf54d625242dfbe201c2a890/Image%20Sample/Analis%20window.png](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/60815f96e2a5f4e5a6c7983b4fdf19e2ac14d024/Image_UI/Penjelasan%20rute.png))
+![GUI Analysis](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/a7d1ee337a302ba164acbe66910c40859c28d622/Image_UI/Penjelasan%20rute.png)
 
 ---
 
 ### 📊 Visualisasi Map dengan OpenStreetMap
 
-![GUI Analysis]([https://github.com/Feuriee/AI-Bidirectional-Search-Map-UNIB/blob/5589d632bb7bee1cdf54d625242dfbe201c2a890/Image%20Sample/Map%20Screen.png](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/60815f96e2a5f4e5a6c7983b4fdf19e2ac14d024/Image_UI/map.png))
+![GUI Analysis](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/a7d1ee337a302ba164acbe66910c40859c28d622/Image_UI/map.png)
 
 ---
 
 ### 📊 Hasil Perbandingan Algoritma
 
-![GUI Map Location]([https://github.com/Feuriee/AI-Bidirectional-Search-Map-UNIB/blob/main/Image%20Sample/Map%20Loc.png](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/60815f96e2a5f4e5a6c7983b4fdf19e2ac14d024/Image_UI/perbandingan.png))
+![GUI Map Location](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/a7d1ee337a302ba164acbe66910c40859c28d622/Image_UI/perbandingan.png)
 
 ---
 
