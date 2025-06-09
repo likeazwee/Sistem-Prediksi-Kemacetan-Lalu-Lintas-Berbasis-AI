@@ -8,7 +8,7 @@
 - [Frontend Interface](#frontend-interface)
 - [Main Application](#main-application)
 - [Analisis Teknis](#analisis-teknis)
-- [Perbandingan Model](#Perbandingan-Model)
+- [Perbandingan Model](#perbandingan-sistem)
 ## Arsitektur Sistem
 
 Smart City Bengkulu menggunakan arsitektur multi-layer yang terdiri dari:
@@ -574,7 +574,7 @@ def api_predict():
 
 ### 📊 Visualisasi Perbandingan Algoritma
 
-![GUI Map Location](https://github.com/Feuriee/AI-Bidirectional-Search-Map-UNIB/blob/main/Image%20Sample/Map%20Loc.png)
+![GUI Map Location](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/e38800ac4a1c8dedcc2a3971903ad6d366de0a53/Image_UI/perbandingan.png)
 
 ---
 
