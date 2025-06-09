@@ -67,21 +67,25 @@ MAE = (1/n) * ∑ |yᵢ - ŷᵢ|
 * $ŷᵢ$ = nilai prediksi
 * $n$ = jumlah data
 
-Semakin kecil MAE, semakin akurat model.
+### R² (R-squared / Coefficient of Determination)
 
-#### Mean Absolute Error (MAE)
-
-Mengukur rata-rata kesalahan absolut:
+R² mengukur seberapa baik model menjelaskan variasi dalam data:
 
 ```
-MAE = (1/n) * ∑ |yᵢ - ŷᵢ|
+R² = 1 - (SSres / SStot)
 ```
 
-* $yᵢ$ = nilai aktual
-* $ŷᵢ$ = nilai prediksi
-* $n$ = jumlah data
+Dimana:
+- **SSres** = Sum of Squares of Residuals = ∑(yᵢ - ŷᵢ)²
+- **SStot** = Total Sum of Squares = ∑(yᵢ - ȳ)²
+- **ȳ** = rata-rata nilai aktual
 
-Semakin kecil MAE, semakin akurat model.
+### Interpretasi R²:
+- **R² = 1**: Model sempurna (100% variasi dijelaskan)
+- **R² = 0**: Model tidak lebih baik dari rata-rata
+- **R² < 0**: Model lebih buruk dari rata-rata
+- **Rentang**: -∞ hingga 1
+
 
 #### Method `train_models()`
 
