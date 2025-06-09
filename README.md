@@ -45,6 +45,30 @@ SISTEM/
 └── main.py
 ```
 
+## 🖥️ Tampilan Antarmuka
+
+### 🔍 Halaman Pencarian Rute
+
+![GUI Main Window]([https://github.com/Feuriee/AI-Bidirectional-Search-Map-UNIB/blob/main/Image%20Sample/Main%20window.png](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/60815f96e2a5f4e5a6c7983b4fdf19e2ac14d024/Image_UI/Halaman.png))
+
+### 📊 Hasil Pencarian Rute
+
+![GUI Analysis]([https://github.com/Feuriee/AI-Bidirectional-Search-Map-UNIB/blob/5589d632bb7bee1cdf54d625242dfbe201c2a890/Image%20Sample/Analis%20window.png](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/60815f96e2a5f4e5a6c7983b4fdf19e2ac14d024/Image_UI/Penjelasan%20rute.png))
+
+---
+
+### 📊 Visualisasi Map dengan OpenStreetMap
+
+![GUI Analysis]([https://github.com/Feuriee/AI-Bidirectional-Search-Map-UNIB/blob/5589d632bb7bee1cdf54d625242dfbe201c2a890/Image%20Sample/Map%20Screen.png](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/60815f96e2a5f4e5a6c7983b4fdf19e2ac14d024/Image_UI/map.png))
+
+---
+
+### 📊 Hasil Perbandingan Algoritma
+
+![GUI Map Location]([https://github.com/Feuriee/AI-Bidirectional-Search-Map-UNIB/blob/main/Image%20Sample/Map%20Loc.png](https://github.com/likeazwee/Sistem-Prediksi-Kemacetan-Lalu-Lintas-Berbasis-AI/blob/60815f96e2a5f4e5a6c7983b4fdf19e2ac14d024/Image_UI/perbandingan.png))
+
+---
+
 ### Penjelasan File Utama
 
 #### `main.py` - Core Application
@@ -92,19 +116,6 @@ Sistem menggunakan 4 fitur utama:
 - `hari` (1-7): Hari dalam minggu (1=Senin, 7=Minggu)
 - `is_weekend` (0/1): Flag akhir pekan
 - `rush_hour` (0/1): Flag jam sibuk (07:00-09:00, 17:00-19:00)
-
-### Data Generation Logic
-
-```python
-# Contoh logika simulasi data
-base_speed = 35  # km/jam baseline
-if rush_hour:
-    base_speed -= random(10, 20)  # Penurunan saat jam sibuk
-if is_weekend:
-    base_speed += random(5, 10)   # Peningkatan saat weekend
-if late_night:
-    base_speed += random(8, 15)   # Peningkatan saat malam
-```
 
 ## Sistem Pemetaan
 
@@ -154,72 +165,6 @@ python main.py
 4. **Akses Aplikasi**
 - Buka browser dan kunjungi: `http://localhost:5000`
 - Atau akses dari jaringan lokal: `http://[IP-ADDRESS]:5000`
-
-### Configuration Options
-
-Anda dapat memodifikasi pengaturan default di `main.py`:
-```python
-# Default locations
-DEFAULT_REGION = "Bengkulu, Indonesia"
-DEFAULT_START = "Universitas Bengkulu"  
-DEFAULT_END = "Pasar Panorama Bengkulu"
-
-# Server settings
-DEBUG_MODE = True
-HOST = '0.0.0.0'
-PORT = 5000
-```
-
-## API Documentation
-
-### Endpoint: `POST /api/predict`
-
-Mendapatkan prediksi lalu lintas via API untuk integrasi eksternal.
-
-**Request Body:**
-```json
-{
-  "jam": 17,
-  "hari": 5
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "predictions": {
-    "Linear Regression": 22.45,
-    "Neural Network": 18.32
-  },
-  "timestamp": "2025-06-08T12:00:00.123456"
-}
-```
-
-**Error Response:**
-```json
-{
-  "success": false,
-  "error": "Invalid input parameters",
-  "timestamp": "2025-06-08T12:00:00.123456"
-}
-```
-
-### Integration Example
-
-```python
-import requests
-
-# Prediksi untuk Jumat jam 17:00
-response = requests.post('http://localhost:5000/api/predict', 
-                        json={'jam': 17, 'hari': 5})
-data = response.json()
-
-if data['success']:
-    predictions = data['predictions']
-    print(f"Linear Regression: {predictions['Linear Regression']:.2f} km/h")
-    print(f"Neural Network: {predictions['Neural Network']:.2f} km/h")
-```
 
 ## Use Cases & Applications
 
