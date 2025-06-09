@@ -84,6 +84,7 @@ SISTEM/
 - **Prediction Pipeline**: Menghasilkan prediksi kecepatan dalam km/jam
 
 #### `data.py` - Data Processing & Mapping
+- **Data Scramble**: Mengumpulkan data dari Dinas Perhubungan untuk mencari volume kendaraan pada provinsi Bengkulu.
 - **Traffic Data Generator**: Simulasi data lalu lintas dengan pola realistis
 - **OSM Network Loader**: Mengunduh dan cache jaringan jalan dari OpenStreetMap  
 - **Route Calculator**: Algoritma shortest path untuk mencari rute optimal
@@ -277,29 +278,3 @@ app.run(debug=True, host='0.0.0.0', port=5000)
 ### Technical Improvements
 - [ ] **API Rate Limiting**: Pembatasan request untuk stabilitas
 - [ ] **Load Balancing**: Support untuk high-traffic scenarios
-
-## Contributing
-
-Kami menerima kontribusi dari komunitas! Berikut cara berkontribusi:
-
-### Development Setup
-1. Fork repository ini
-2. Create feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Submit Pull Request
-
-### Contribution Guidelines
-- Follow PEP 8 style guide untuk Python code
-- Tambahkan unit tests untuk fitur baru
-- Update dokumentasi jika diperlukan
-- Pastikan tidak ada breaking changes
-
-## Acknowledgments
-
-- **OpenStreetMap Contributors**: Data peta open-source
-- **Scikit-learn Team**: Library machine learning
-- **Flask Community**: Web framework yang powerful
-- **Folium Developers**: Visualisasi peta yang indah
-- **Universitas Bengkulu**: Dukungan akademik dan riset
-
