@@ -2,13 +2,21 @@
 
 Sistem prediksi lalu lintas cerdas yang menggunakan kecerdasan buatan untuk memprediksi kecepatan kendaraan dan mendeteksi potensi kemacetan di wilayah Bengkulu. Aplikasi berbasis web ini menggabungkan machine learning, analisis jaringan jalan, dan visualisasi peta interaktif untuk memberikan insight lalu lintas real-time.
 
+---
+
 ## Tim Pengembang
 
-| Nama                     | NPM       | GitHub Profile                              | Role            |
-|--------------------------|-----------|---------------------------------------------|-----------------|
-| Habib Al-Qodri           | G1A023047 | [@HabibAlQodri](https://github.com/HabibAlQodri) | Backend & ML    |
-| Yohanes Adi Prasetya     | G1A023049 | [@Feuriee](https://github.com/Feuriee)      | Frontend & UI   |
-| Agyl Wendi Pratama       | G1A023087 | [@likeazwee](https://github.com/likeazwee)  | Data & Testing  |
+| Nama                 | NPM       | GitHub Profile                                   | Role           |
+| -------------------- | --------- | ------------------------------------------------ | -------------- |
+| Habib Al-Qodri       | G1A023047 | [@HabibAlQodri](https://github.com/HabibAlQodri) | Backend & ML   |
+| Yohanes Adi Prasetya | G1A023049 | [@Feuriee](https://github.com/Feuriee)           | Frontend & UI  |
+| Agyl Wendi Pratama   | G1A023087 | [@likeazwee](https://github.com/likeazwee)       | Data & Testing |
+
+Program Studi: Teknik Informatika
+Universitas: Universitas Bengkulu
+Dosen Pembimbing: Ir. Arie Vatresia, S.T., M.T.I., Ph.D
+
+---
 
 ## Fitur Unggulan
 
