@@ -21,10 +21,10 @@ Smart City Bengkulu menggunakan arsitektur multi-layer yang terdiri dari:
 │          Controller Layer               │
 │           (main.py)                     │
 ├─────────────────────────────────────────┤
-│       Machine Learning Layer           │
+│       Machine Learning Layer            │
 │          (sistem.py)                    │
 ├─────────────────────────────────────────┤
-│        Data Processing Layer           │
+│        Data Processing Layer            │
 │           (data.py)                     │
 └─────────────────────────────────────────┘
 ```
