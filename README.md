@@ -4,19 +4,19 @@ Sistem prediksi lalu lintas cerdas yang menggunakan kecerdasan buatan untuk memp
 
 ---
 
-## Tim Pengembang
+# Tim Pengembang
 
-| Nama                 | NPM       | GitHub Profile                                   | Role           |
-| -------------------- | --------- | ------------------------------------------------ | -------------- |
-| Habib Al-Qodri       | G1A023047 | [@HabibAlQodri](https://github.com/HabibAlQodri) | Backend & ML   |
-| Yohanes Adi Prasetya | G1A023049 | [@Feuriee](https://github.com/Feuriee)           | Frontend & UI  |
-| Agyl Wendi Pratama   | G1A023087 | [@likeazwee](https://github.com/likeazwee)       | Data & Testing |
-
-Program Studi: Teknik Informatika
-Universitas: Universitas Bengkulu
-Dosen Pembimbing: Ir. Arie Vatresia, S.T., M.T.I., Ph.D
+| Nama | NPM | GitHub Profile | Role |
+| ---- | --- | -------------- | ---- |
+| **Habib Al-Qodri** | G1A023047 | [@HabibAlQodri](https://github.com/HabibAlQodri) | Backend & ML |
+| **Yohanes Adi Prasetya** | G1A023049 | [@Feuriee](https://github.com/Feuriee) | Frontend & UI |
+| **Agyl Wendi Pratama** | G1A023087 | [@likeazwee](https://github.com/likeazwee) | Data & Testing |
 
 ---
+
+- **Program Studi:** Teknik Informatika
+- **Universitas:** Universitas Bengkulu
+- **Dosen Pembimbing:** Ir. Arie Vatresia, S.T., M.T.I., Ph.D
 
 ## Fitur Unggulan
 
