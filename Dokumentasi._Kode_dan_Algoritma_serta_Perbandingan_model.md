@@ -246,7 +246,7 @@ def shortest_route(G, start, end):
 
 **Algoritma Routing:**
 - **Nearest Node Mapping**: Mapping koordinat GPS ke node terdekat di graph
-- **Dijkstra Algorithm**: NetworkX shortest_path menggunakan algoritma Dijkstra
+- **Neural Network Algorithm**: NetworkX shortest_path menggunakan algoritma Neural Network
 - **Weight-based Optimization**: Optimasi berdasarkan panjang jalan (length)
 
 #### Congestion Detection
@@ -309,9 +309,9 @@ button:hover {
 ```
 
 **UX Enhancements:**
-- **Focus States**: Blue glow effect pada input focus
-- **Hover Animations**: Subtle transform effects pada button hover
-- **Visual Feedback**: Color transitions untuk interaksi user
+- **Focus States**: Menggunakan hover dan penempatan UI yang interaktif
+- **Hover Animations**: Animasi Hover yang dinamis
+- **Visual Feedback**: Pemilihan warna serta transisi
 
 #### Dynamic Status Indicators
 
@@ -321,10 +321,10 @@ button:hover {
 .status.macet { color: #991b1b; background: #fecaca; }
 ```
 
-**Traffic Status Classification:**
-- **Lancar**: > 30 km/jam (Green theme)
-- **Sedang**: 15-30 km/jam (Yellow theme)
-- **Macet**: < 15 km/jam (Red theme)
+**Traffic Status:**
+- **Lancar**: > 30 km/jam (Hijau)
+- **Sedang**: 15-30 km/jam (Kuning)
+- **Macet**: < 15 km/jam (Merah)
 
 #### Tab-based Interface
 
@@ -345,9 +345,9 @@ function showTab(id) {
 ```
 
 **Interactive Features:**
-- **Tab Switching**: Dynamic content switching tanpa page reload
-- **Active State Management**: CSS class manipulation untuk visual feedback
-- **Content Organization**: Separation antara prediction results dan model comparison
+- **Tab Switching**: Rooting tab dan switch antar tab secara simultan dan mulus
+- **Active State Management**: Penggunaan CSS untuk stylesheet
+- **Content Organization**: Separasi antara konten dan grouping untuk UI yang interaktif
 
 ### 4. Main Application Controller (`main.py`)
 
@@ -400,8 +400,8 @@ def index():
 ```
 
 **Request Processing:**
-- **Form Validation**: Input sanitization dan type conversion
-- **Default Values**: Fallback values untuk semua parameters
+- **Form Validation**: Input user yang bisa dipilih sesuai keinginan
+- **Default Values**: Fallback untuk semua parameter yang diperlukan
 - **Error Handling**: Graceful error handling dengan user feedback
 
 #### Machine Learning Pipeline
@@ -421,10 +421,9 @@ if not error:
 ```
 
 **Pipeline Execution:**
-1. **Data Generation**: Create synthetic traffic data
+1. **Data Generation**: Mengumpulkan data, membuat serta menyimpan data
 2. **Model Training**: Train semua models yang tersedia
-3. **Feature Engineering**: Create feature vector untuk prediction
-4. **Prediction Execution**: Run prediction dengan performance monitoring
+3. **Prediction Execution**: Run prediction dengan performance monitoring
 
 #### Model Selection Logic
 
@@ -452,7 +451,7 @@ else:
 ```
 
 **Dynamic Model Selection:**
-- **All Models Mode**: Run comparison antara semua available models
+- **All Models Mode**: Run comparison antara semua model
 - **Single Model Mode**: Execute specific model yang dipilih user
 - **Best Prediction**: Select highest speed prediction untuk route calculation
 
@@ -477,11 +476,11 @@ try:
 
 **Route Calculation Process:**
 1. **Network Loading**: Load road network dengan caching
-2. **Geocoding**: Convert location names ke coordinates
-3. **Route Finding**: Calculate shortest path
+2. **Geocoding**: Mengubah nama lokasi menjadi koordinat
+3. **Route Finding**: kalkulasi shortest path
 4. **Performance Tracking**: Monitor execution time dan memory usage
-5. **Distance Calculation**: Calculate total route distance
-6. **Time Estimation**: Estimate travel time berdasarkan predicted speed
+5. **Distance Calculation**: Kalkulasi total route distance
+6. **Time Estimation**: Estimasi travel time berdasarkan predicted speed
 
 #### Alternative Route Generation
 
@@ -508,10 +507,10 @@ if congestion_points and route:
 ```
 
 **Alternative Route Logic:**
-- **Congestion Detection**: Identify potential congestion points
-- **Graph Modification**: Remove congested node untuk force alternative path
-- **Alternative Calculation**: Calculate new route avoiding congestion
-- **Comparison Metrics**: Calculate distance dan time untuk comparison
+- **Deteksi Kemacetan**: Mengidentifikasi titik-titik yang berpotensi mengalami kemacetan
+- **Modifikasi Graf**: Menghapus simpul yang mengalami kemacetan untuk memaksa pencarian rute alternatif
+- **Perhitungan Rute Alternatif**: Menghitung rute baru dengan menghindari titik kemacetan
+- **Metode Perbandingan**: Menghitung jarak dan waktu tempuh untuk membandingkan rute utama dan alternatif
 
 #### API Endpoint
 
@@ -537,38 +536,51 @@ def api_predict():
 - **Timestamp**: ISO format timestamp untuk tracking
 - **Success Indicator**: Boolean success flag untuk error handling
 
-## Analisis Teknis
+---
 
-### Performance Optimizations
+## **Analisis Teknis**
 
-1. **Ca
-2. **Memory Management**
-   - Memory profiling untuk setiap major operation
-   - Tracemalloc integration untuk detailed memory tracking
-   - Peak memory usage reporting
+### **Optimasi Performa**
 
-3. **Error Handling**
-   - Graceful fallback untuk geocoding failures
-   - Exception handling di setiap critical operation
-   - User-friendly error messages
+1. **Strategi Caching**
 
-### Scalability Considerations
+   * **Caching jaringan jalan menggunakan sistem file**
+   * **Caching hasil geocoding dalam memori**
+   * **Penyimpanan data graf menggunakan format GraphML**
 
-1. **Data Generation**
-   - Synthetic data generation untuk consistent testing
-   - Configurable dataset size (default: 1000 samples)
-   - Random seed untuk reproducible results
+2. **Manajemen Memori**
 
-2. **Model Architecture**
-   - Extensible model dictionary untuk easy model addition
-   - Pluggable ML algorithms
-   - Performance metrics standardization
+   * **Profiling memori untuk setiap operasi utama**
+   * **Integrasi tracemalloc untuk pelacakan memori secara detail**
+   * **Pelaporan penggunaan memori puncak**
 
-3. **Route Calculation**
-   - OSMnx integration untuk real-world road networks
-   - NetworkX graph algorithms untuk efficient pathfinding
-   - Alternative route generation untuk traffic optimization
+3. **Penanganan Error**
 
+   * **Fallback yang halus untuk kegagalan geocoding**
+   * **Penanganan exception di setiap operasi kritis**
+   * **Pesan error yang ramah pengguna**
+
+### **Pertimbangan Skalabilitas**
+
+1. **Pembuatan Data**
+
+   * **Pembuatan data sintetis untuk pengujian yang konsisten**
+   * **Ukuran dataset yang dapat dikonfigurasi (default: 1000 sampel)**
+   * **Seed acak untuk hasil yang dapat direproduksi**
+
+2. **Arsitektur Model**
+
+   * **Kamus model yang dapat diperluas untuk penambahan model yang mudah**
+   * **Algoritma ML yang dapat dipasang (pluggable)**
+   * **Standarisasi metrik performa**
+
+3. **Perhitungan Rute**
+
+   * **Integrasi OSMnx untuk jaringan jalan dunia nyata**
+   * **Algoritma graph NetworkX untuk pencarian jalur yang efisien**
+   * **Pembuatan rute alternatif untuk optimasi lalu lintas**
+
+---
 
 ## Perbandingan Sistem
 
@@ -602,15 +614,3 @@ def api_predict():
 - Namun, jika data menjadi lebih kompleks atau non-linear, **Neural Network** bisa dipertimbangkan untuk pengembangan ke depan.
 
 ---
-
-## Kesimpulan Teknis
-
-Sistem prediksi lalu lintas ini mendemonstrasikan implementasi end-to-end machine learning application dengan fokus pada:
-
-- **Modular Architecture**: Separation of concerns dengan clear layer boundaries
-- **Performance Monitoring**: Comprehensive tracking execution time dan memory usage
-- **User Experience**: Modern web interface dengan interactive features
-- **Scalability**: Extensible design untuk future enhancements
-- **Reliability**: Robust error handling dan fallback mechanisms
-
-Kode ini suitable untuk development lebih lanjut dan dapat dijadikan foundation untuk smart city traffic management systems yang lebih kompleks.
